@@ -1,3 +1,5 @@
-<p>
-  login works!
-</p>
+<input type="email" [(ngModel)]="user.email" />
+<input type="password" [(ngModel)]="user.password" />
+<input type="text" [(ngModel)]="user.username" />
+
+<button (click)="login()"></button>

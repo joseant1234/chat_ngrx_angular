@@ -1,5 +1,5 @@
-import * as AuthActions from '../Actions/auth.action';
-import { AuthActionTypes } from '../Actions/auth.action';
+import * as AuthActions from '../actions/auth.action';
+import { AuthActionTypes } from '../actions/auth.action';
 
 export interface State {
   user: Array<any>;

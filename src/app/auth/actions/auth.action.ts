@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { IUser } from '../../interfaces/IUser';
 
 export enum AuthActionTypes {
   // por convención se pone el nombre del modulo [Auth] para conocer que modulo se esta utilizando
@@ -17,12 +18,12 @@ export class LoggedIn implements Action {
 
 export class LogoutAuth implements Action {
   readonly type = AuthActionTypes.LogoutAuth;
-  constructor(public payload: { isLogin: boolean}) {}
+  constructor(public payload: { isLogout: boolean}) {}
 }
 
 export class LoginUser implements Action {
   readonly type = AuthActionTypes.LoginUser;
-  constructor(public payload: { user: string, pass: string}) {}
+  constructor(public payload: { user: IUser}) {}
 }
 
 export class LoggedUser implements Action {

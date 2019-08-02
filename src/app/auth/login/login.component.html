@@ -1,5 +1,31 @@
-<input type="email" [(ngModel)]="user.email" />
-<input type="password" [(ngModel)]="user.password" />
-<input type="text" [(ngModel)]="user.username" />
+<div class="container">
+  <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/assets/images/logo_chat.jpeg" alt="Card image cap">
+        <div class="progressContainer">
+          <div class="progress" [hidden]="!(isLoading$ | async)">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          <p class="card-text">
+            <input type="email" [(ngModel)]="user.email" placeholder="email"/>
+            <input type="text" [(ngModel)]="user.username" placeholder="Nombre de usuario"/>
+            <input type="password" [(ngModel)]="user.password" placeholder="Password"/>
+          </p>
+          <a class="btn btn-primary" (click)="login()">Entrar</a>
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="$error | async">
+          Ingreso inválido su email y/o contraseña y/o nombre de usuario
+        </div>
+      </div>
+    </div>
+    <div class="col-sm"></div>
+  </div>
+</div>
 
-<button (click)="login()"></button>
+
+

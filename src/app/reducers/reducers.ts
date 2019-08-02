@@ -6,7 +6,7 @@ import {
   MetaReducer,
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { RouterStateUrl } from '../../shared/utils';
+import { RouterStateUrl } from '../auth/shareds/utils';
 import * as fromRouter from '@ngrx/router-store';
 // En caso se haga alguna modificación en un estado inmutable, se vea una alerta
 import { storeFreeze } from 'ngrx-store-freeze';
@@ -14,7 +14,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromAuth from '../auth/reducers/auth.reducer';
 
 export interface State {
-  auth: fromAuth.state,
+  auth: fromAuth.State,
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 

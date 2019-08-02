@@ -15,11 +15,12 @@ import { environment } from '../environments/environment';
 
 const NGRX_IMPORTS = [
   StoreModule.forRoot(reducers, { metaReducers }),
-  StoreRouterConnectiogModule.forRoot({stateKey: 'router'}),
+  StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
   EffectsModule.forRoot([]),
   StoreDevtoolsModule.instrument({
     name: 'AngularChatNgRx',
-    logOnly: environment.production
+    logOnly: environment.production,
+    maxAge: 25
   })
 ]
 

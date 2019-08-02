@@ -32,5 +32,5 @@ export function AuthReducer(state = [], action: AuthActions.actions) {
 
 // Son los valores del momento, para state, action, error de la clase
 export const getAuthState = (state: State) => state.user;
-export const getAuthAction = (action: any) => action.payload;
+export const getAuthLoading = (action: any) => action.payload;
 export const getAuthError = (state: State) => state.error;

@@ -13,6 +13,7 @@ import {
   LoginUserError,
 } from '../actions/auth.action';
 import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 // Los effects son injectables
 @Injectable({
@@ -21,7 +22,10 @@ import { AuthService } from '../service/auth.service';
 
 export class AuthEffects {
 
-  constructor(private http: HttpClient, private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router) {}
 
   // ejecuta una accion sobre un pipe (que es un observable)
   // pipe permite ejecutar los operadores
@@ -41,7 +45,7 @@ export class AuthEffects {
     tap(v => console.log('loginUser effect', v)),
     map(action => action.payload),
     exhaustMap(auth => {
-      return this.authService.login(auth.user)
+      return this.authService.login(auth)
                   .pipe(
                     map(response => new LoggedUser(response)),
                     catchError(error => of(new LoginUserError(error)))
@@ -49,14 +53,11 @@ export class AuthEffects {
     })
   );
 
-  @Effect()
+  @Effect({ dispatch: false})
   LoggedUser$: Observable<Action> = this.actions$.pipe(
     ofType<LoggedUser>(AuthActionTypes.LoggedUser),
-    tap(v => console.log('LoggedUser payload', v.payload)),
-    map(data => {
-      console.log(data)
-      return { type: '', payload: data };
-    })
+    tap(v => this.router.navigate(['/chats'])),
+
   );
 
 

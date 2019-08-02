@@ -33,7 +33,7 @@ export class LoggedUser implements Action {
 
 export class LoginUserError implements Action {
   readonly type = AuthActionTypes.LoginUserError;
-  constructor(public payload: { error: string}) {}
+  constructor(public payload: { isLoading: boolean, error: boolean, user: IUser}) {}
 }
 
 export type actions =

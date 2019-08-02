@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../interfaces/IUser';
 import { AuthService } from '../service/auth.service';
 import { Store, select } from '@ngrx/store';
+import * as fromAuth from '../../reducers/reducers';
 import * as Auth from '../actions/auth.action';
 
 @Component({
@@ -12,12 +13,12 @@ import * as Auth from '../actions/auth.action';
 export class LoginComponent implements OnInit {
 
   user: IUser;
-  // loginProcess: boolean;
-  // error: boolean = false;
-  error$ = this.store.select(state => state.auth.error);
-  isLoading$ = this.store.select(state => state.auth.isLoading);
+  // error$ = this.store.select(state => state.auth.error);
+  // isLoading$ = this.store.select(state => state.auth.isLoading);
+  error$ = this.store.select(state => fromAuth.getAuthError);
+  isLoading$ = this.store.select(state => fromAuth.getAuthLoading);
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<fromAuth.State>) { }
 
   ngOnInit() {
     this.user = {
